@@ -14,3 +14,8 @@
 --  (update by Paul Driver)
 ----------------------------------------------------------------
 --  Fan Update
+
+## Why is it here?
+
+I like this addon enough to try to improve it here and there.
+
