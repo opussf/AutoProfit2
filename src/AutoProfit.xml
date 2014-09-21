@@ -1,0 +1,81 @@
+<!--
+	AutoProfit
+	Version: @VERSION@
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	
+	<Script file="AutoProfit.lua"/>
+	
+	<Frame name="AutoProfit" parent="UIParent" hidden="true">
+		<Scripts>
+			<OnLoad>
+				AP.OnLoad();
+			</OnLoad>
+			<OnEvent>
+				AP[event]();
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="AutoProfit_Options">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_Title" inherits="GameFontNormalLarge">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset><AbsDimension x="16" y="-16"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_SubTitle" inherits="GameFontHighlightSmall"
+						text="Stuffs">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$parent_AutoSellBox" inherits="OptionsCheckButtonTemplate" text="Auto Sell">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent">
+						<Offset>
+							<AbsDimension x="20" y="-100"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<!--
+				<Scripts>
+					<OnLoad>getglobal(self:GetName().."Text"):SetText("Enabled"); </OnLoad>
+				</Scripts>
+				-->
+			</CheckButton>
+			<CheckButton name="$parent_SilentSell" inherits="OptionsCheckButtonTemplate" text="Silent sales">
+				<Anchors>
+					<Anchor point="TOPLET" relativePoint="BOTTOMLEFT" relativeTo="$parent_AutoSellBox">
+						<Offset>
+							<AbsDimension x="0" y="-10"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				AP.OptionsOnLoad(self)
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+<!--
+	<GameTooltip name="AutoProfit_Tooltip" inherits="GameTooltipTemplate" hidden="true">
+		<Scripts>
+			<OnLoad>
+				this:SetScript("OnTooltipAddMoney", AutoProfit_AddCoin);
+			</OnLoad>
+		</Scripts>
+	</GameTooltip>
+-->
+</Ui>
