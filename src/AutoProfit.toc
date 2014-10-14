@@ -1,5 +1,5 @@
 ## Title: AutoProfit v@VERSION@
-## Interface: 50400
+## Interface: @INTERFACE@
 ## Version: @VERSION@
 ## SavedVariables: autoProfitExceptions, autoProfitOptions
 ## OptionalDeps: MobInfo2
