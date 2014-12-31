@@ -96,7 +96,7 @@ function AP.Usage()
   p = AP.Print;
   p(AUTOPROFIT_VERSION .. " by Jason Allen.");
   p("Update by Paul Driver");
-  p("Update by Charles Gordon");
+  p("Update by OpusSF");
   p("/autoprofit [item link]", "Add or remove an item to the exception list.");
   p("/autoprofit list", "List all items on your exception list.");
   p("/autoprofit [number]", 
