@@ -17,16 +17,16 @@ autoProfitOptions = {["autoSell"] = 0, ["autoAnnounce"] = 1, ["totalProfit"] = 0
 
 AP = {};
 AP.totalProfit = 0;
-AUTOPROFIT_VERSION = "v@VERSION@ @TODAY@";
+AUTOPROFIT_VERSION = "v@VERSION@";
 
 function AP.Print(arg1, arg2)
 	local caption = "";
 	local message = "";
 
-	if (arg2) then 
-		caption = arg1; 
+	if (arg2) then
+		caption = arg1;
 		message = arg2;
-	else 
+	else
 		caption = "AutoProfit";
 		message = arg1;
 	end
@@ -65,7 +65,7 @@ function AP.ForAllJunk(action, message)
 						total_value = total_value + (action(bag, slot) * itemCount);
 					end
 				end
-	
+
 			end -- for slot
 		end -- if bag
 	end -- for bag
@@ -99,7 +99,7 @@ function AP.Usage()
   p("Update by OpusSF");
   p("/autoprofit [item link]", "Add or remove an item to the exception list.");
   p("/autoprofit list", "List all items on your exception list.");
-  p("/autoprofit [number]", 
+  p("/autoprofit [number]",
     "Remove item at that location in your exception list");
   p("/autoprofit purge", "Remove all items from your exception list.");
   p("/autoprofit silent", "Toggles sale reporting on and off.");
@@ -109,7 +109,7 @@ end
 --No switch statement in Lua? Use a jump table instead!--
 AP.SlashCmd_switches = {
 	[""] = AP.Usage,
-	["purge"] = function () 
+	["purge"] = function ()
 			autoProfitExceptions = { };
 			AP.Print("Deleted all exceptions.");
 		end,
@@ -202,9 +202,9 @@ end
 
 function AP.OptionsOnLoad(frame)
 	frame.name = "AutoProfit";
-	
+
 	AutoProfit_Options_Title:SetText(frame.name .. " " .. AUTOPROFIT_VERSION);
-	
+
 	InterfaceOptions_AddCategory(frame);
 end
 
