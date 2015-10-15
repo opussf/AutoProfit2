@@ -17,4 +17,8 @@ end
 function test.after()
 end
 
+function test.test_RespondsToOpenMerchant_Show()
+	AP.MERCHANT_SHOW()
+end
+
 test.run()
