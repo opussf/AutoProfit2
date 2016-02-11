@@ -13,8 +13,12 @@ local itemDB = {
 }
 
 -- simulate an internal inventory
---myInventory = { ["9999"] = 52, }
+-- myInventory = { ["9999"] = 52, }
+		-- myInventory = { ["9999"] = {52, 0, 1}, }
+		-- myInventory = { ["<itemID"] = {<count>, <bagID>, <slotID>}, }
 myInventory = {}
+-- bagInfo is the info about the containers themselves
+-- bagInfo = {<size>, <type>}
 bagInfo = {
 	[0] = {16, 0},
 }
@@ -428,6 +432,11 @@ function GetContainerNumFreeSlots( bagId )
 	else
 		return 0, 0
 	end
+end
+function GetContainerNumSlots( bagId )
+	-- http://www.wowwiki.com/API_GetContainerNumSlots
+	-- return the number of slots that the bag has
+	return 0
 end
 function GetCurrencyInfo( id ) -- id is string
 	-- http://wowprogramming.com/docs/api/GetCurrencyInfo

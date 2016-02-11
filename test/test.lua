@@ -17,6 +17,20 @@ end
 function test.after()
 end
 
+--[[
+Test Plan:
+
+Overview:
+This addon fires only when a merchant window opens, and sells grey items.
+
+
+
+Setup:
+
+
+
+]]
+
 function test.test_RespondsToOpenMerchant_Show()
 	AP.MERCHANT_SHOW()
 end
