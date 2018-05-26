@@ -87,11 +87,11 @@ function AP.SellJunk()
 		AP.Print("Profit", AP.MoneyFormat(total_sold));
 	end
 end
-
+--[[
 function AP.MoneyFormat(copperIn)
 	return GetCoinTextureString(copperIn);
 end
-
+]]
 function AP.Usage()
   p = AP.Print;
   p(AUTOPROFIT_VERSION .. " by Jason Allen.");
@@ -105,6 +105,7 @@ function AP.Usage()
   p("/autoprofit silent", "Toggles sale reporting on and off.");
   p("/autoprofit auto", "Toggles automatic selling on and off.");
 end
+
 
 --No switch statement in Lua? Use a jump table instead!--
 AP.SlashCmd_switches = {
@@ -132,7 +133,7 @@ AP.SlashCmd_switches = {
 				s = "on";
 			end
 			AP.Print("Sale reporting " .. s)
-			end,
+		end,
 	["list"] = function ()
 			if (table.getn(autoProfitExceptions) > 0) then
 				AP.Print("AutoProfit Exceptions", "")
@@ -142,7 +143,7 @@ AP.SlashCmd_switches = {
 			else
 				AP.Print("Your exceptions list is empty.")
 			end
-			end,
+		end,
 }
 
 function AP.SlashCmd(msg)
@@ -177,7 +178,7 @@ function AP.SlashCmd(msg)
 		end
 	end
 end
-
+--[[
 function AP.Sell(link)
 	-- name, link, rarity/quality (0-7), ilvL, minLvl, class/type, subclass/subtype, stackCount, EquipLoc, Texture, SellPrice = GetItemInfo()
 	local name, _, quality, _, _, class, subclass = GetItemInfo(link);
@@ -199,7 +200,7 @@ function AP.Sell(link)
 		return nil;
 	end
 end
-
+]]
 function AP.OptionsOnLoad(frame)
 	frame.name = "AutoProfit";
 
@@ -207,4 +208,3 @@ function AP.OptionsOnLoad(frame)
 
 	InterfaceOptions_AddCategory(frame);
 end
-

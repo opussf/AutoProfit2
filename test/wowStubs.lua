@@ -639,6 +639,11 @@ function GetCoinTextureString( copperIn, fontHeight )
 				(copper and copper.."C"))
 	end
 end
+function GetContainerItemInfo( bagId, slotId )
+	-- local texture, itemCount, locked, quality, readable, _, link =
+	--						GetContainerItemInfo(bag, slot);
+
+end
 function GetContainerItemLink( bagId, slotId )
 end
 function GetContainerNumFreeSlots( bagId )
