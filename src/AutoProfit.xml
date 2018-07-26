@@ -2,12 +2,11 @@
 	AutoProfit
 	Version: @VERSION@
 -->
-
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
-	
+
 	<Script file="AutoProfit.lua"/>
-	
+
 	<Frame name="AutoProfit" parent="UIParent" hidden="true">
 		<Scripts>
 			<OnLoad>
@@ -18,7 +17,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			</OnEvent>
 		</Scripts>
 	</Frame>
-	
+
 	<Frame name="AutoProfit_Options">
 		<Layers>
 			<Layer level="ARTWORK">
@@ -68,7 +67,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			</OnLoad>
 		</Scripts>
 	</Frame>
-	
+
 <!--
 	<GameTooltip name="AutoProfit_Tooltip" inherits="GameTooltipTemplate" hidden="true">
 		<Scripts>
