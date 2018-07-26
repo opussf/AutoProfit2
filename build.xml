@@ -66,6 +66,14 @@
 	<filter token="VERSION" value="${version.number}"/>
 	<filter token="INTERFACE" value="${INTERFACE}"/>
 
+	<patternset id="packageFiles">
+		<include name="src/*.xml"/>
+		<include name="src/*.toc"/>
+		<include name="src/*.lua"/>
+		<include name="${working.dir}/*.txt"/>
+		<include name="./*.md"/>
+	</patternset>
+
 	<target name="clean" description="Cleans old builds">
 		<delete dir="target" verbose="true"/>
 	</target>
@@ -81,18 +89,9 @@
 
 	<target name="package" depends="changelog, test" description="Create a deploy package">
 		<property name="package.dir" location="${working.dir}/${ant.project.name}"/>
-		<copy	todir="${package.dir}" filtering="true">
-			<fileset dir="src">
-				<include name="*.lua"/>
-				<include name="*.toc"/>
-				<include name="*.xml"/>
-				<include name="*.txt"/>
-			</fileset>
-			<fileset dir="${working.dir}">
-				<include name="*.txt"/>
-			</fileset>
+		<copy	todir="${package.dir}" filtering="true" flatten="true">
 			<fileset dir=".">
-				<include name="*.md"/>
+				<patternset refid="packageFiles"/>
 			</fileset>
 		</copy>
 		<zip 	destfile="${target.dir}/${project.zip}"
@@ -114,12 +113,9 @@
 
 	<target name="wow" depends="test" description="copy files to currnet wow install">
 		<mkdir dir="${addon.dir}"/>
-		<copy todir="${addon.dir}" filtering="true">
-			<fileset dir="src">
-				<include name="*.lua"/>
-				<include name="*.toc"/>
-				<include name="*.xml"/>
-				<include name="*.txt"/>
+		<copy todir="${addon.dir}" filtering="true" force="true">
+			<fileset dir=".">
+				<patternset refid="packageFiles"/>
 			</fileset>
 		</copy>
 	</target>
