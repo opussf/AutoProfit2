@@ -136,21 +136,4 @@
 		</fail>
 	</target>
 
-	<target name="deploy" depends="deploy.check" description="deploys the file" if="deploy.run">
-		<copy todir="${deploy.dir}">
-			<fileset dir="${deploy.from}">
-				<include name="*.zip"/>
-			</fileset>
-		</copy>
-	</target>
-
-	<target name="deploy.check">
-		<condition property="deploy.run">
-			<and>
-				<available file="${deploy.from}" type="dir"/>
-				<available file="${deploy.dir}" type="dir"/>
-			</and>
-		</condition>
-	</target>
-
 </project>
