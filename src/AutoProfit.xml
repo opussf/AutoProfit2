@@ -37,7 +37,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			</Layer>
 		</Layers>
 		<Frames>
-			<CheckButton name="$parent_AutoSellBox" inherits="OptionsCheckButtonTemplate" text="Auto Sell">
+			<CheckButton name="$parent_AutoSellBox" inherits="InterfaceOptionsCheckButtonTemplate" text="Auto Sell">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parent">
 						<Offset>
@@ -51,7 +51,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 				</Scripts>
 				-->
 			</CheckButton>
-			<CheckButton name="$parent_SilentSell" inherits="OptionsCheckButtonTemplate" text="Silent sales">
+			<CheckButton name="$parent_SilentSell" inherits="InterfaceOptionsCheckButtonTemplate" text="Silent sales">
 				<Anchors>
 					<Anchor point="TOPLET" relativePoint="BOTTOMLEFT" relativeTo="$parent_AutoSellBox">
 						<Offset>
