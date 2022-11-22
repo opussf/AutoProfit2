@@ -50,15 +50,18 @@ end
 function AP.ForAllJunk(action, message)
 	local total_value = 0;
 	for bag = 0, 4 do
-		if GetContainerNumSlots(bag) > 0 then
-			for slot = 0, GetContainerNumSlots(bag) do
-				local texture, itemCount, locked, quality, readable, _, link =
-						GetContainerItemInfo(bag, slot);
-				if (quality) then
-					local sell = AP.Sell(link);
+		if C_Container.GetContainerNumSlots(bag) > 0 then
+			for slot = 0, C_Container.GetContainerNumSlots(bag) do
+				local ContainerItemInfo = C_Container.GetContainerItemInfo(bag, slot)
+				if ContainerItemInfo then
+					local quality = ContainerItemInfo.quality
+					local link = ContainerItemInfo.hyperlink
+					local itemCount = ContainerItemInfo.stackCount
+
+					local sell = AP.Sell(link, quality)
 					if (sell and autoProfitOptions["autoSell"] == 1) then
-						--ap.Print(bag..":"..slot..":"..itemCount.."x"..link);
-						--ap.Print("Sell this");
+						--AP.Print(bag..":"..slot..":"..itemCount.."x"..link);
+						--AP.Print("Sell this");
 						if (message and autoProfitOptions["autoAnnounce"] == 1) then
 							AP.Print(message(bag, slot));
 						end
@@ -75,13 +78,13 @@ end
 function AP.SellJunk()
 	local total_sold = AP.ForAllJunk(
 		function(bag, slot)  -- action
-			local _, _, _, _, _, _, link = GetContainerItemInfo(bag, slot);
+			local link = C_Container.GetContainerItemInfo(bag, slot).hyperlink
 			local _,_, _, _, _, _, _, _, _, _, vendorPrice = GetItemInfo(link);
-			UseContainerItem(bag, slot);
+			C_Container.UseContainerItem(bag, slot);
 			return vendorPrice;
 		end,
 		function(bag, slot)
-			return "Sold " .. GetContainerItemLink(bag, slot);
+			return "Sold " .. C_Container.GetContainerItemLink(bag, slot);
 		end);
 	if (total_sold>0 and autoProfitOptions["autoAnnounce"] == 1 and autoProfitOptions["autoSell"] == 1) then
 		AP.Print("Profit", AP.MoneyFormat(total_sold));
@@ -178,10 +181,10 @@ function AP.SlashCmd(msg)
 	end
 end
 
-function AP.Sell(link)
+function AP.Sell(link, quality)
 	-- name, link, rarity/quality (0-7), ilvL, minLvl, class/type, subclass/subtype, stackCount, EquipLoc, Texture, SellPrice = GetItemInfo()
-	local name, _, quality, _, _, class, subclass = GetItemInfo(link);
-	--AP.Print(name..":"..quality..":"..class..":"..subclass);
+	--local name, _, quality, _, _, class, subclass = GetItemInfo(link);
+	--AP.Print(quality..":"..link)
 	if (quality == 0) then
 		for i=1, table.getn(autoProfitExceptions) do
 			if (link == autoProfitExceptions[i]) then
