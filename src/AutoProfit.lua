@@ -206,8 +206,15 @@ end
 function AP.OptionsOnLoad(frame)
 	frame.name = "AutoProfit";
 
-	AutoProfit_Options_Title:SetText(frame.name .. " " .. AUTOPROFIT_VERSION);
+	AutoProfit_Options_Title:SetText(frame.name .. " v" .. AUTOPROFIT_VERSION);
 
-	InterfaceOptions_AddCategory(frame);
+	local category = Settings.RegisterCanvasLayoutCategory( frame, frame.name )
+	frame.category = category
+	Settings.RegisterAddOnCategory( category )
+	frame.OnCommit = nop
+	frame.OnDefault = nop
+	frame.OnRefresh = nop
+
+	-- InterfaceOptions_AddCategory(frame);
 end
 
