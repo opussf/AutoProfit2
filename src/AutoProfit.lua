@@ -79,7 +79,7 @@ function AP.SellJunk()
 	local total_sold = AP.ForAllJunk(
 		function(bag, slot)  -- action
 			local link = C_Container.GetContainerItemInfo(bag, slot).hyperlink
-			local _,_, _, _, _, _, _, _, _, _, vendorPrice = GetItemInfo(link);
+			local _,_, _, _, _, _, _, _, _, _, vendorPrice = C_Item.GetItemInfo(link);
 			C_Container.UseContainerItem(bag, slot);
 			return vendorPrice;
 		end,
@@ -92,7 +92,7 @@ function AP.SellJunk()
 end
 
 function AP.MoneyFormat(copperIn)
-	return GetCoinTextureString(copperIn);
+	return C_CurrencyInfo.GetCoinTextureString(copperIn);
 end
 
 function AP.Usage()
@@ -182,8 +182,8 @@ function AP.SlashCmd(msg)
 end
 
 function AP.Sell(link, quality)
-	-- name, link, rarity/quality (0-7), ilvL, minLvl, class/type, subclass/subtype, stackCount, EquipLoc, Texture, SellPrice = GetItemInfo()
-	--local name, _, quality, _, _, class, subclass = GetItemInfo(link);
+	-- name, link, rarity/quality (0-7), ilvL, minLvl, class/type, subclass/subtype, stackCount, EquipLoc, Texture, SellPrice = C_Item.GetItemInfo()
+	--local name, _, quality, _, _, class, subclass = C_Item.GetItemInfo(link);
 	--AP.Print(quality..":"..link)
 	if (quality == 0) then
 		for i=1, table.getn(autoProfitExceptions) do
